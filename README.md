@@ -9,6 +9,7 @@ UVC generator python script takes following UVM object/components as input:
 - seqit
 - sequence base
 - package
+- interface
 
 Script changes <name> object in all of the files with the given input name, adds header and footer, creates an folder with the given name and places the edited files in there.
 
