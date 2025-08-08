@@ -1,6 +1,6 @@
 import os
 import re
-from datetime import datetime
+import sys
 
 def process_file(template_path, header, footer, name, out_fname):
     with open(template_path, 'r') as f:
@@ -12,8 +12,12 @@ def process_file(template_path, header, footer, name, out_fname):
     # Add header and footer
     return header + '\n' + content + '\n' + footer
 
-def main():
-    name = input("Enter UVC name: ").strip()
+def main(name=None):
+    if name is None:
+        if len(sys.argv) > 1:
+            name = sys.argv[1]
+        else:
+            name = input("Enter UVC name: ").strip()
     workspace = os.path.dirname(os.path.abspath(__file__))
     out_dir = os.path.join(workspace, f"{name.lower()}_uvc")
     os.makedirs(out_dir, exist_ok=True)
